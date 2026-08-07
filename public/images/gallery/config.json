@@ -1,0 +1,179 @@
+{
+  "slots": [
+    {
+      "id": 1,
+      "image": "/images/gallery/1.png",
+      "title": "South Indian Wedding",
+      "category": "Wedding",
+      "spanClass": "masonry-tall"
+    },
+    {
+      "id": 2,
+      "image": "/images/gallery/2.png",
+      "title": "Candid Heritage",
+      "category": "Wedding",
+      "spanClass": "masonry-large"
+    },
+    {
+      "id": 3,
+      "image": "/images/gallery/3.png",
+      "title": "Newborn Wonders",
+      "category": "Baby Shoot",
+      "spanClass": ""
+    },
+    {
+      "id": 4,
+      "image": "/images/gallery/4.png",
+      "title": "Classic Portraiture",
+      "category": "Portrait",
+      "spanClass": ""
+    },
+    {
+      "id": 5,
+      "image": "/images/gallery/5.png",
+      "title": "Vogue Editorial",
+      "category": "Fashion",
+      "spanClass": "masonry-tall"
+    },
+    {
+      "id": 6,
+      "image": "/images/gallery/6.png",
+      "title": "Timeless Union",
+      "category": "Cinematography",
+      "spanClass": "masonry-wide"
+    },
+    {
+      "id": 7,
+      "image": "/images/gallery/7.png",
+      "title": "Priya & Arun",
+      "category": "Pre Wedding",
+      "spanClass": ""
+    },
+    {
+      "id": 8,
+      "image": "/images/gallery/8.png",
+      "title": "Luxury Horizon",
+      "category": "Commercial",
+      "spanClass": ""
+    },
+    {
+      "id": 9,
+      "image": "/images/gallery/9.png",
+      "title": "Grand Gala Night",
+      "category": "Events",
+      "spanClass": "masonry-wide"
+    },
+    {
+      "id": 10,
+      "image": "/images/gallery/10.png",
+      "title": "Candid Emotions",
+      "category": "Wedding",
+      "spanClass": "masonry-wide"
+    },
+    {
+      "id": 11,
+      "image": "/images/gallery/11.png",
+      "title": "Traditional Ceremony",
+      "category": "Wedding",
+      "spanClass": ""
+    },
+    {
+      "id": 12,
+      "image": "/images/gallery/12.png",
+      "title": "Fine Art Portrait",
+      "category": "Portrait",
+      "spanClass": "masonry-tall"
+    },
+    {
+      "id": 13,
+      "image": "/images/gallery/13.png",
+      "title": "Little Angel",
+      "category": "Baby Shoot",
+      "spanClass": ""
+    },
+    {
+      "id": 14,
+      "image": "/images/gallery/14.png",
+      "title": "Editorial Fashion",
+      "category": "Fashion",
+      "spanClass": ""
+    },
+    {
+      "id": 15,
+      "image": "/images/gallery/15.png",
+      "title": "Destination Aerial",
+      "category": "Cinematography",
+      "spanClass": "masonry-large"
+    },
+    {
+      "id": 16,
+      "image": "/images/gallery/16.png",
+      "title": "Golden Hour",
+      "category": "Pre Wedding",
+      "spanClass": ""
+    },
+    {
+      "id": 17,
+      "image": "/images/gallery/17.png",
+      "title": "Celebration Night",
+      "category": "Events",
+      "spanClass": ""
+    },
+    {
+      "id": 18,
+      "image": "/images/gallery/18.png",
+      "title": "Brand Campaign",
+      "category": "Commercial",
+      "spanClass": "masonry-tall"
+    },
+    {
+      "id": 19,
+      "image": "/images/gallery/19.png",
+      "title": "Royal Wedding",
+      "category": "Wedding",
+      "spanClass": ""
+    },
+    {
+      "id": 20,
+      "image": "/images/gallery/20.png",
+      "title": "Unscripted Joy",
+      "category": "Wedding",
+      "spanClass": "masonry-wide"
+    },
+    {
+      "id": 21,
+      "image": "/images/gallery/21.png",
+      "title": "Studio Portraiture",
+      "category": "Portrait",
+      "spanClass": ""
+    },
+    {
+      "id": 22,
+      "image": "/images/gallery/22.png",
+      "title": "High Fashion",
+      "category": "Fashion",
+      "spanClass": ""
+    },
+    {
+      "id": 23,
+      "image": "/images/gallery/23.png",
+      "title": "Coastal Romance",
+      "category": "Pre Wedding",
+      "spanClass": ""
+    },
+    {
+      "id": 24,
+      "image": "/images/gallery/24.png",
+      "title": "Grand Venue",
+      "category": "Cinematography",
+      "spanClass": "masonry-wide"
+    },
+    {
+      "id": 25,
+      "image": "/images/gallery/25.png",
+      "title": "Heritage Moments",
+      "category": "Wedding",
+      "spanClass": ""
+    }
+  ]
+}
