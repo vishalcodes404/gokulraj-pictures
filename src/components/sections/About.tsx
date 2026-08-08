@@ -1,218 +1,142 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { STATS, TIMELINE } from '@/src/constants/navigation';
-import ImageReveal from '@/src/components/animations/ImageReveal';
-
-gsap.registerPlugin(ScrollTrigger);
-
-function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
-  const countRef = useRef<HTMLSpanElement>(null);
-  const hasAnimated = useRef(false);
-
-  useEffect(() => {
-    if (!countRef.current || hasAnimated.current) return;
-
-    const el = countRef.current;
-
-    ScrollTrigger.create({
-      trigger: el,
-      start: 'top 90%',
-      onEnter: () => {
-        if (hasAnimated.current) return;
-        hasAnimated.current = true;
-
-        const obj = { val: 0 };
-        gsap.to(obj, {
-          val: value,
-          duration: 2,
-          ease: 'power2.out',
-          onUpdate: () => {
-            el.textContent = Math.round(obj.val) + suffix;
-          },
-        });
-      },
-    });
-  }, [value, suffix]);
-
-  return (
-    <span ref={countRef} className="heading-xl text-accent">
-      0{suffix}
-    </span>
-  );
-}
 
 export default function About() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const headerRef = useRef<HTMLDivElement>(null);
-  const storyRef = useRef<HTMLDivElement>(null);
-  const timelineRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const headlineRef = useRef<HTMLHeadingElement>(null);
+  const textColsRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!sectionRef.current) return;
+    if (!containerRef.current) return;
 
-    // Header animation
-    gsap.from(headerRef.current?.querySelectorAll('.about-header-el') || [], {
-      y: 60,
-      opacity: 0,
-      duration: 0.8,
-      stagger: 0.15,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: headerRef.current,
-        start: 'top 85%',
-        toggleActions: 'play none none none',
-      },
-    });
+    const tl = gsap.timeline({ delay: 0.2 });
 
-    // Story text animation
-    gsap.from(storyRef.current?.querySelectorAll('.story-el') || [], {
-      y: 40,
-      opacity: 0,
-      duration: 0.7,
-      stagger: 0.1,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: storyRef.current,
-        start: 'top 80%',
-        toggleActions: 'play none none none',
-      },
-    });
+    if (headlineRef.current) {
+      tl.fromTo(
+        headlineRef.current,
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 1.0, ease: 'power3.out' }
+      );
+    }
 
-    // Timeline items
-    const timelineItems = timelineRef.current?.querySelectorAll('.timeline-item');
-    if (timelineItems) {
-      gsap.from(timelineItems, {
-        x: -40,
-        opacity: 0,
-        duration: 0.6,
-        stagger: 0.12,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: timelineRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none none',
-        },
-      });
+    if (textColsRef.current) {
+      tl.fromTo(
+        textColsRef.current.children,
+        { opacity: 0, y: 25 },
+        { opacity: 1, y: 0, duration: 0.9, stagger: 0.15, ease: 'power3.out' },
+        '-=0.6'
+      );
+    }
+
+    if (imageRef.current) {
+      tl.fromTo(
+        imageRef.current,
+        { opacity: 0, scale: 0.98 },
+        { opacity: 1, scale: 1, duration: 1.2, ease: 'power3.out' },
+        '-=0.8'
+      );
     }
   }, []);
 
   return (
     <section
-      ref={sectionRef}
+      ref={containerRef}
       id="about"
-      className="section-padding bg-background"
-      aria-label="About Gokulraj Pictures"
+      className="relative min-h-screen bg-white text-[#111111] pt-4 pb-24 select-none flex flex-col items-center w-full"
+      aria-label="About Gokulraj"
     >
-      <div className="section-container">
-        {/* Header */}
-        <div ref={headerRef} className="mb-16 lg:mb-24">
-          <span className="about-header-el label-text block mb-4">About Us</span>
-          <h2 className="about-header-el heading-lg">
-            The Story Behind <span className="text-accent">the Lens</span>
-          </h2>
-        </div>
+      <div
+        className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start"
+        style={{ maxWidth: 1260, marginLeft: 'auto', marginRight: 'auto', paddingLeft: 24, paddingRight: 24 }}
+      >
+        {/* Left Column: Subtitle + Headline + 2-Column Story Text (6 cols on lg) */}
+        <div className="lg:col-span-6 flex flex-col justify-between h-full pt-1">
+          {/* Subtitle / Category Tag */}
+          <span className="text-[10px] sm:text-[11px] tracking-[0.28em] font-sans uppercase font-medium text-[#111111]/80 block mb-6">
+            THE ART OF STILLNESS: INSIDE THE WORLD OF GOKULRAJ PICTURES
+          </span>
 
-        {/* Main Content - Image + Story */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 mb-24">
-          {/* Portrait Image */}
-          <ImageReveal className="relative aspect-[3/4] rounded-sm" direction="left">
-            <Image
-              src="/images/about/photographer.png"
-              alt="Gokulraj - Lead Photographer"
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              loading="lazy"
-            />
-          </ImageReveal>
+          {/* Main Headline Statement */}
+          <h1
+            ref={headlineRef}
+            className="font-serif text-2xl sm:text-3xl md:text-[2rem] font-light text-[#111111] leading-[1.35] tracking-tight mb-8"
+          >
+            Wedding photographer Gokulraj has built a life and career defined by light, honesty and love, both behind the lens and at home.
+          </h1>
 
-          {/* Story */}
-          <div ref={storyRef} className="flex flex-col justify-center">
-            <h3 className="story-el heading-md mb-6">
-              A Passion for <span className="text-accent">Visual Storytelling</span>
-            </h3>
-            <p className="story-el body-lg mb-6">
-              Founded with a vision to transform moments into timeless art, Gokulraj
-              Pictures has grown into one of the most sought-after photography studios.
-              Every project we undertake is infused with creativity, passion, and an
-              unwavering commitment to excellence.
-            </p>
-            <p className="story-el body-lg mb-8">
-              Our philosophy is simple: every story deserves to be told beautifully.
-              Whether it&apos;s the sacred rituals of a wedding, the innocence of a newborn,
-              or the elegance of a fashion editorial — we approach each frame with the
-              same dedication and artistic vision.
-            </p>
+          {/* 2-Column Newspaper/Editorial Text Block */}
+          <div
+            ref={textColsRef}
+            className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-7 text-[12px] sm:text-[12.5px] font-serif leading-[1.85] text-[#333333]"
+          >
+            {/* Left Column Paragraphs */}
+            <div className="space-y-4 font-light">
+              <p>
+                Sunlight spills across the timber floors of a studio home, soft and golden against the quiet hum of family life. Here, wedding photographer Gokulraj begins his day in the space built together on open land. It is a home filled with light, laughter and gratitude, the kind of place that reflects the calm and honesty woven through his work.
+              </p>
 
-            {/* Mission & Vision */}
-            <div className="story-el grid grid-cols-1 sm:grid-cols-2 gap-8">
-              <div>
-                <h4 className="label-text mb-3">Our Mission</h4>
-                <p className="body-md">
-                  To capture life&apos;s most precious moments with artistry,
-                  authenticity, and cinematic beauty.
-                </p>
-              </div>
-              <div>
-                <h4 className="label-text mb-3">Our Vision</h4>
-                <p className="body-md">
-                  To be the most trusted name in photography, known for
-                  creating timeless visual stories.
-                </p>
-              </div>
+              <blockquote className="italic border-l border-black/20 pl-3.5 py-0.5 text-[#111111] font-light">
+                &ldquo;I still have pinch-me moments,&rdquo; he says. &ldquo;We built this life together. To say I&apos;m proud to capture these stories is an understatement. I love the craft we&apos;ve worked so hard for.&rdquo;
+              </blockquote>
+
+              <p>
+                That same sense of intention and grounded beauty flows through every image Gokulraj creates. Based in India and photographing weddings across the world, his work is defined by emotion and elegance. Known for his timeless style and instinctive use of light, he captures the quiet in-between moments that often go unseen, a glance, a laugh, the trace of sunlight through fabric.
+              </p>
+
+              <p>
+                Before weddings, there was fashion. Gokulraj&apos;s early years photographing campaigns shaped his refined approach to composition and detail, teaching him the balance between structure and spontaneity. &ldquo;Fashion taught me to find beauty in simplicity,&rdquo; he says. &ldquo;But weddings taught me to find meaning in imperfection.&rdquo;
+              </p>
+            </div>
+
+            {/* Right Column Paragraphs */}
+            <div className="space-y-4 font-light">
+              <p>
+                Now, more than ten years into his career, his imagery is recognised for its warmth and cinematic stillness. He has photographed love stories around the world, from coastal elopements to grand celebrations, yet what he treasures most are the fleeting details that make each day unique.
+              </p>
+
+              <blockquote className="italic border-l border-black/20 pl-3.5 py-0.5 text-[#111111] font-light">
+                &ldquo;I&apos;m a hopeless romantic,&rdquo; he admits with a smile. &ldquo;After all these years, I still absolutely love love. It&apos;s the little moments that stay with me, not just between the couple, but between the people they love. That&apos;s what makes each story feel alive.&rdquo;
+              </blockquote>
+
+              <p>
+                Through his lens, beauty feels effortless. There is no artifice, no excess, only truth rendered softly in light and shadow. His photographs do not simply record a wedding day; they preserve the atmosphere, the pulse, the human connection.
+              </p>
+
+              <p>
+                In Gokulraj&apos;s world, love is not a pose or a performance. It is presence, and he captures it with quiet grace.
+              </p>
             </div>
           </div>
         </div>
 
-        {/* Statistics */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-24 py-16 border-t border-b border-border">
-          {STATS.map((stat) => (
-            <div key={stat.label} className="text-center">
-              <AnimatedCounter value={stat.value} suffix={stat.suffix} />
-              <p className="body-md mt-2">{stat.label}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* Timeline */}
-        <div ref={timelineRef}>
-          <h3 className="heading-md mb-12 text-center">
-            Our <span className="text-accent">Journey</span>
-          </h3>
-          <div className="relative">
-            {/* Center line */}
-            <div className="absolute left-4 lg:left-1/2 top-0 bottom-0 w-[1px] bg-border lg:-translate-x-1/2" />
-
-            <div className="space-y-12">
-              {TIMELINE.map((item, index) => (
-                <div
-                  key={item.year}
-                  className={`timeline-item relative flex items-start gap-8 ${
-                    index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
-                  }`}
-                >
-                  {/* Dot */}
-                  <div className="absolute left-4 lg:left-1/2 w-3 h-3 rounded-full bg-accent border-2 border-background -translate-x-1/2 mt-2 z-10" />
-
-                  {/* Content */}
-                  <div className={`ml-12 lg:ml-0 lg:w-[45%] ${index % 2 === 0 ? 'lg:text-right lg:pr-12' : 'lg:text-left lg:pl-12'}`}>
-                    <span className="label-text">{item.year}</span>
-                    <h4 className="heading-sm mt-2 mb-2">{item.title}</h4>
-                    <p className="body-md">{item.description}</p>
-                  </div>
-
-                  {/* Spacer for alignment */}
-                  <div className="hidden lg:block lg:w-[45%]" />
-                </div>
-              ))}
-            </div>
-          </div>
+        {/* Right Column: Lengthy Portrait Image (6 cols on lg) */}
+        <div
+          ref={imageRef}
+          className="lg:col-span-6 relative w-full h-[600px] sm:h-[750px] lg:h-[860px] rounded-sm overflow-hidden bg-[#FAFAFA] group cursor-pointer border border-black/5 shadow-xs"
+        >
+          <Image
+            src="/images/about/photographer.png"
+            alt="Gokulraj - Fine Art Wedding Photographer"
+            fill
+            className="object-cover object-top grayscale contrast-[1.03] transition-transform duration-1000 ease-out group-hover:scale-[1.02]"
+            priority
+            sizes="(max-width: 1024px) 100vw, 50vw"
+          />
         </div>
       </div>
+
+      {/* Vertical Fixed BACK TO TOP indicator on Bottom Left matching reference layout */}
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        className="fixed bottom-12 left-6 z-40 origin-bottom-left -rotate-90 text-[9px] tracking-[0.3em] font-sans text-[#111111]/60 hover:text-[#111111] uppercase font-medium cursor-pointer transition-colors duration-300 hidden md:block border-none bg-transparent"
+        aria-label="Back to top"
+      >
+        BACK TO TOP
+      </button>
     </section>
   );
 }

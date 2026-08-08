@@ -1,8 +1,8 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import Navbar from '@/src/components/layout/Navbar';
-import Footer from '@/src/components/layout/Footer';
+import EditorialHeader from '@/src/components/sections/EditorialHeader';
+import EditorialFooter from '@/src/components/sections/EditorialFooter';
 import Contact from '@/src/components/sections/Contact';
 
 const CustomCursor = dynamic(() => import('@/src/components/layout/CustomCursor'), { ssr: false });
@@ -12,11 +12,11 @@ export default function ContactPage() {
   return (
     <SmoothScrollProvider>
       <CustomCursor />
-      <Navbar />
-      <main className="pt-24">
+      <EditorialHeader darkMode={true} />
+      <main className="bg-[#050505] min-h-screen">
         <Contact />
       </main>
-      <Footer />
+      <EditorialFooter />
       <div className="film-grain" aria-hidden="true" />
     </SmoothScrollProvider>
   );

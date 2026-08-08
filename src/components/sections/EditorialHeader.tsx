@@ -12,7 +12,7 @@ const NAV_LINKS = [
   { label: 'CONTACT', href: '/contact' },
 ];
 
-export default function EditorialHeader() {
+export default function EditorialHeader({ darkMode = false }: { darkMode?: boolean }) {
   const headerRef = useRef<HTMLElement>(null);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
@@ -42,28 +42,36 @@ export default function EditorialHeader() {
 
   return (
     <>
-      <header ref={headerRef} className="editorial-header" role="banner">
+      <header
+        ref={headerRef}
+        className={`editorial-header transition-colors duration-300 ${
+          darkMode ? 'bg-[#050505] text-white border-b border-white/10' : ''
+        }`}
+        role="banner"
+      >
         {/* Centered Logo */}
         <div className="logo-group" style={{ opacity: 0 }}>
-          <Link href="#" aria-label="Gokulraj Pictures Home" style={{ textDecoration: 'none' }}>
+          <Link href="/" aria-label="Gokulraj Pictures Home" style={{ textDecoration: 'none' }}>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               {/* Logo image */}
-              <div style={{
-                width: 48,
-                height: 48,
-                borderRadius: '50%',
-                overflow: 'hidden',
-                marginBottom: 14,
-                border: '0.5px solid #e8e6e3',
-              }}>
+              <div
+                style={{
+                  width: 48,
+                  height: 48,
+                  borderRadius: '50%',
+                  overflow: 'hidden',
+                  marginBottom: 14,
+                  border: darkMode ? '0.5px solid #D4AF37' : '0.5px solid #e8e6e3',
+                }}
+              >
                 <img
                   src="/images/logo.png"
                   alt="Gokulraj Pictures"
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
               </div>
-              <span className="editorial-logo-text">GOKULRAJ</span>
-              <span className="editorial-logo-sub">PICTURES</span>
+              <span className={`editorial-logo-text ${darkMode ? 'text-white' : ''}`}>GOKULRAJ</span>
+              <span className={`editorial-logo-sub ${darkMode ? 'text-[#E5C158]' : ''}`}>PICTURES</span>
             </div>
           </Link>
         </div>
@@ -74,7 +82,7 @@ export default function EditorialHeader() {
             <Link
               key={link.label}
               href={link.href}
-              className="nav-link-item"
+              className={`nav-link-item ${darkMode ? 'text-white/80 hover:text-[#E5C158]' : ''}`}
               style={{ opacity: 0 }}
             >
               {link.label}
@@ -97,7 +105,7 @@ export default function EditorialHeader() {
             fontSize: 10,
             letterSpacing: '0.25em',
             textTransform: 'uppercase' as const,
-            color: '#1a1a1a',
+            color: darkMode ? '#ffffff' : '#1a1a1a',
             fontWeight: 500,
           }}
         >
@@ -108,7 +116,7 @@ export default function EditorialHeader() {
       {/* Mobile Menu Overlay */}
       {isMobileOpen && (
         <div
-          className="mobile-menu-overlay"
+          className={`mobile-menu-overlay ${darkMode ? 'bg-[#050505] text-white' : ''}`}
           style={{
             display: 'flex',
             flexDirection: 'column',
@@ -132,7 +140,7 @@ export default function EditorialHeader() {
               fontSize: 10,
               letterSpacing: '0.25em',
               textTransform: 'uppercase' as const,
-              color: '#1a1a1a',
+              color: darkMode ? '#ffffff' : '#1a1a1a',
               fontWeight: 500,
             }}
           >
@@ -141,9 +149,9 @@ export default function EditorialHeader() {
 
           {/* Mobile Logo */}
           <div style={{ marginBottom: 24, textAlign: 'center' }}>
-            <span className="editorial-logo-text" style={{ fontSize: '1.5rem' }}>GOKULRAJ</span>
+            <span className={`editorial-logo-text ${darkMode ? 'text-white' : ''}`} style={{ fontSize: '1.5rem' }}>GOKULRAJ</span>
             <br />
-            <span className="editorial-logo-sub" style={{ fontSize: '0.7rem' }}>PICTURES</span>
+            <span className={`editorial-logo-sub ${darkMode ? 'text-[#E5C158]' : ''}`} style={{ fontSize: '0.7rem' }}>PICTURES</span>
           </div>
 
           {/* Mobile Nav Links */}
@@ -157,7 +165,7 @@ export default function EditorialHeader() {
                 fontSize: 20,
                 fontWeight: 400,
                 letterSpacing: '0.15em',
-                color: '#1a1a1a',
+                color: darkMode ? '#ffffff' : '#1a1a1a',
                 textDecoration: 'none',
                 textTransform: 'uppercase' as const,
                 transition: 'color 0.3s ease',

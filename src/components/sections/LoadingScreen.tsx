@@ -20,12 +20,10 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
     }
 
     // 2. Animate logo entrance
-    const tl = gsap.timeline();
-
-    tl.fromTo(
+    gsap.fromTo(
       logoRef.current,
       { opacity: 0, scale: 0.85, filter: 'blur(10px)' },
-      { opacity: 1, scale: 1, filter: 'blur(0px)', duration: 1.0, ease: 'power3.out' }
+      { opacity: 1, scale: 1, filter: 'blur(0px)', duration: 0.9, ease: 'power3.out' }
     );
 
     // 3. Transition out after loading finishes (~2.5s)
@@ -52,12 +50,12 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
       className="fixed inset-0 z-[100000] bg-[#050505] flex items-center justify-center select-none cursor-wait"
       aria-label="Loading Gokulraj Pictures"
     >
-      {/* Centered Logo with soft gold glow and breathing effect */}
+      {/* Centered Glowing Yellow Circle Logo without progress bar */}
       <div
         ref={logoRef}
-        className="relative flex items-center justify-center logo-glow"
+        className="relative flex items-center justify-center"
       >
-        <div className="relative w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden border border-[#FFBA00]/30 shadow-[0_0_50px_rgba(255,186,0,0.25)]">
+        <div className="relative w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden border border-[#FFBA00]/40 shadow-[0_0_60px_rgba(255,186,0,0.65)] bg-[#FFB800] flex items-center justify-center">
           <Image
             src="/images/logo.png"
             alt="Gokulraj Pictures Logo"
