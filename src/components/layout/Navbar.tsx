@@ -5,11 +5,10 @@ import Link from 'next/link';
 import MobileMenu from './MobileMenu';
 
 export const EDITORIAL_NAV_LINKS = [
-  { label: 'HOME', href: '/' },
-  { label: 'PLANS', href: '/plans' },
-  { label: 'SHOOTS', href: '/shoots' },
-  { label: 'ABOUT', href: '/about' },
-  { label: 'CONTACT', href: '/contact' },
+  { label: 'HOME', href: '/#hero' },
+  { label: 'SHOOTS', href: '/#shoots' },
+  { label: 'ABOUT', href: '/#about' },
+  { label: 'CONTACT', href: '/#contact' },
 ];
 
 export default function Navbar() {
@@ -21,7 +20,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto flex flex-col items-center justify-center text-center">
           {/* Centered Brand Title / Logo */}
           <Link
-            href="#"
+            href="/#hero"
             className="flex flex-col items-center group mb-6"
             aria-label="Gokulraj Pictures Home"
           >

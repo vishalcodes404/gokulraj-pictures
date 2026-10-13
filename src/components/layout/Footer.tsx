@@ -60,7 +60,7 @@ export default function Footer() {
                 className="w-14 h-14 rounded-full"
               />
               <div>
-                <span className="block text-white font-medium tracking-wider text-lg">
+                <span className="block text-foreground font-medium tracking-wider text-lg">
                   GOKULRAJ <span className="text-accent">PICTURES</span>
                 </span>
               </div>

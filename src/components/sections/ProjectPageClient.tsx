@@ -128,11 +128,11 @@ export default function ProjectPageClient({ project, prevProject, nextProject }:
 
         {/* Back button */}
         <Link
-          href="/#portfolio"
+          href="/#shoots"
           className="absolute top-24 left-8 lg:left-16 flex items-center gap-2 text-sm text-foreground-muted hover:text-accent transition-colors"
         >
           <FaArrowLeft className="w-3 h-3" />
-          Back to Portfolio
+          Back to Shoots
         </Link>
       </div>
 

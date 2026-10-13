@@ -12,8 +12,8 @@ export default function ContactPage() {
   return (
     <SmoothScrollProvider>
       <CustomCursor />
-      <EditorialHeader darkMode={true} />
-      <main className="bg-[#050505] min-h-screen">
+      <EditorialHeader darkMode={false} />
+      <main className="bg-white text-[#111111] min-h-screen">
         <Contact />
       </main>
       <EditorialFooter />

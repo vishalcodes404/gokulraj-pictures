@@ -2,7 +2,6 @@ import { NavLink, StatItem, TimelineItem } from '@/src/types';
 
 export const NAV_LINKS: NavLink[] = [
   { label: 'Home', href: '/' },
-  { label: 'Plans', href: '/plans' },
   { label: 'Shoots', href: '/shoots' },
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
@@ -11,12 +10,12 @@ export const NAV_LINKS: NavLink[] = [
 export const BRAND = {
   name: 'Gokulraj Pictures',
   tagline: 'Capturing Stories That Last Forever',
-  phone: '+91 98765 43210',
+  phone: '+91 98947 38911',
   email: 'hello@gokulrajpictures.com',
   instagram: '@gokulrajpictures',
-  whatsapp: '+919876543210',
-  address: '123 Photography Lane, Creative District, Chennai, Tamil Nadu 600001',
-  mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248849.886539092!2d80.04919045!3d13.047525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5265ea4f7d3361%3A0x6e61a70b6863d433!2sChennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin',
+  whatsapp: '+919894738911',
+  address: 'Gokulraj Pictures, Coimbatore, Tamil Nadu 641001',
+  mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125322.44173117565!2d76.88483286084605!3d11.014201479831416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba859af2f971cb5%3A0x2fc1c81e183ed282!2sCoimbatore%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin',
 };
 
 export const STATS: StatItem[] = [
